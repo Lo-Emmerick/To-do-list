@@ -3,85 +3,94 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:layout_height="wrap_content"
+    android:background="#E0DCE4">
 
     <View
-        android:id="@+id/logoImage"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:background="@color/cinza"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/text"
+        android:layout_width="104dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="24dp"
+        android:background="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp" />
-
-    <LinearLayout
-        android:id="@+id/taskInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:background="@color/cinza"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/logoImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp">
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvCreated"
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:background="@color/cinza"
-        android:textColor="#444"
-        app:layout_constraintStart_toEndOf="@+id/tvCreatedCount"
-        app:layout_constraintTop_toTopOf="@+id/tvCreatedCount" />
-
-    <TextView
-        android:id="@+id/tvCreatedCount"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_count_loading"
-        android:paddingHorizontal="6dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskInputLayout"
-        app:layout_constraintStart_toEndOf="@+id/tvCreated"
-        />
-
-    <TextView
-        android:id="@+id/tvDone"
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:background="@color/cinza"
-        app:layout_constraintStart_toEndOf="@+id/tvDoneCount"
-        app:layout_constraintTop_toTopOf="@+id/tvDoneCount" />
-
-    <TextView
-        android:id="@+id/tvDoneCount"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_count_loading"
-        android:paddingHorizontal="6dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintEnd_toEndOf="@+id/taskInputLayout"
-        app:layout_constraintStart_toEndOf="@+id/tvCreated"
-        app:layout_constraintTop_toTopOf="@+id/tvCreated" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/list"
-        android:layout_width="350"
-        android:layout_height="100dp"
-        android:background="@color/cinza"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/taskInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/tvCreatedCount"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreatedCount" />
+        android:id="@+id/circle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_count_loading"
+        app:layout_constraintStart_toEndOf="@+id/text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/text1"
+        android:layout_width="104dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="#C1C1C1"
+        app:layout_constraintEnd_toStartOf="@+id/circle1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/circle1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_count_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
+    <View
+        android:id="@+id/content"
+        android:layout_width="327dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/coponent_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle" />
+
+    <View
+        android:id="@+id/content1"
+        android:layout_width="327dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/coponent_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
+
+    <View
+        android:id="@+id/content2"
+        android:layout_width="327dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/coponent_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content1" />
+
+    <View
+        android:id="@+id/content3"
+        android:layout_width="327dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/coponent_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content2" />
+
+    <View
+        android:id="@+id/content4"
+        android:layout_width="327dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/coponent_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
