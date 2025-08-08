@@ -38,6 +38,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.koin)
+    implementation(libs.koincompat)
+    implementation(libs.koinworkmanager)
+    implementation(libs.koinnavigation)
+    implementation(libs.lifecycleviewmodel)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
