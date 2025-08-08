@@ -2,31 +2,33 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.Task
+import com.example.myapplication.domain.usecase.AddTaskUseCase
+import com.example.myapplication.domain.usecase.DeleteTaskUseCase
+import com.example.myapplication.domain.usecase.SearchTaskUseCase
 import com.example.myapplication.presentation.ui.home.HomeState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
-
+class HomeViewModel(
+    private val searchTaskUseCase: SearchTaskUseCase,
+    private val deleteTaskUseCase: DeleteTaskUseCase,
+    private val addTaskUseCase: AddTaskUseCase
+) : ViewModel() {
     private val _state = MutableLiveData<HomeState>()
     val state: LiveData<HomeState> = _state
-
-    private val task = mutableListOf(
-        Task(id = 1, isChecked = false, text = "Comprar pão"),
-        Task(id = 2, isChecked = true, text = "Estudar Kotlin"),
-        Task(id = 3, isChecked = false, text = "Fazer exercícios")
-    )
 
     fun searchTask() {
         _state.value = HomeState.Loading
         viewModelScope.launch {
-            delay(1000)
-
-            if (task.isEmpty()) {
-                _state.value = HomeState.Empty
-            } else {
-                _state.value = HomeState.Success(task.toList())
+            try {
+                val response = searchTaskUseCase()
+                if (response.isNullOrEmpty()) {
+                    _state.value = HomeState.Empty
+                } else {
+                    _state.value = HomeState.Success(response)
+                }
+            } catch (e: Exception) {
+                _state.value = HomeState.Error
             }
         }
     }
@@ -34,12 +36,11 @@ class HomeViewModel : ViewModel() {
     fun deleteTask(id: Int) {
         _state.value = HomeState.Loading
         viewModelScope.launch {
-            delay(1000)
-
-            if (task.isEmpty()) {
-                _state.value = HomeState.Empty
-            } else {
-                _state.value = HomeState.Success(task.toList())
+            try {
+                val response = deleteTaskUseCase(id)
+                _state.value = HomeState.Success(listOf(response))
+            } catch (e: Exception) {
+                _state.value = HomeState.Error
             }
         }
     }
@@ -47,12 +48,11 @@ class HomeViewModel : ViewModel() {
     fun addTask(text: String) {
         _state.value = HomeState.Loading
         viewModelScope.launch {
-            delay(1000)
-
-            if (task.isEmpty()) {
-                _state.value = HomeState.Empty
-            } else {
-                _state.value = HomeState.Success(task.toList())
+            try {
+                val response = addTaskUseCase(text)
+                _state.value = HomeState.Success(listOf(response))
+            } catch (e: Exception) {
+                _state.value = HomeState.Error
             }
         }
     }

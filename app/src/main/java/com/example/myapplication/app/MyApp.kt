@@ -1,7 +1,9 @@
 package com.example.myapplication.app
 
 import android.app.Application
-import com.example.myapplication.di.loadViewModels
+import com.example.myapplication.di.loadRepositorie
+import com.example.myapplication.di.loadUseCase
+import com.example.myapplication.di.loadViewModel
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +18,7 @@ class MyApp : Application() {
                 androidLogger()
             }
             androidContext(this@MyApp)
-            modules(loadViewModels)
+            modules(loadViewModel, loadUseCase, loadRepositorie)
         }
     }
 }
