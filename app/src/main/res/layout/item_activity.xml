@@ -10,6 +10,7 @@
     android:layout_marginHorizontal="8dp">
 
     <LinearLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -25,12 +26,22 @@
             android:layout_marginEnd="12dp"
             android:tint="#9333EA" />
 
+        <ImageView
+            android:id="@+id/imgTaskCheck"
+            android:visibility="gone"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/check"
+            android:layout_marginEnd="12dp"
+            android:tint="#479C6E" />
+
         <TextView
             android:id="@+id/tvTaskText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+            android:paintFlags="strike_thru_text"
             android:textColor="#1E1E1E"
             android:textSize="14sp"
             android:maxLines="3"

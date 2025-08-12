@@ -4,4 +4,6 @@ import com.example.myapplication.data.Task
 
 interface HomeListener {
     fun deleteTask(item:Task)
+    fun addTask(item: String)
+    fun checked(item:Task)
 }

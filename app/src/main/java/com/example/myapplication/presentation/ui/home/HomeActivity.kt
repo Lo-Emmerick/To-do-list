@@ -76,4 +76,12 @@ class HomeActivity : AppCompatActivity(), HomeListener {
     override fun deleteTask(item: Task) {
 
     }
+
+    override fun addTask(item: String) {
+
+    }
+
+    override fun checked(item: Task) {
+
+    }
 }
