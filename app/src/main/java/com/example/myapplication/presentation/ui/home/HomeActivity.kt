@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
+import com.example.moviedb.ui.home.adapter.HomeAdapter
 import com.example.myapplication.data.Task
 import com.example.myapplication.databinding.ActivityHomeBinding
 import com.example.myapplication.presentation.ui.home.adapter.HomeListener
@@ -61,8 +62,8 @@ class HomeActivity : AppCompatActivity(), HomeListener {
     }
 
     private fun showSuccessScreen(taskList: List<Task>) {
-        Log.v("testee1", "Passouuuu")
-        binding.stateError.root.isVisible = true
+        binding.recyclerTasks.isVisible = true
+        binding.recyclerTasks.adapter = HomeAdapter(taskList, this)
     }
 
     private fun showLoadingScreen() {
@@ -74,14 +75,10 @@ class HomeActivity : AppCompatActivity(), HomeListener {
     }
 
     override fun deleteTask(item: Task) {
-
-    }
-
-    override fun addTask(item: String) {
-
+        viewModel.deleteTask(item)
     }
 
     override fun checked(item: Task) {
-
+        viewModel.editCheck(item)
     }
 }

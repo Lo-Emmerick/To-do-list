@@ -1,0 +1,22 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Checked -->
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#479C6E"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/check"
+                android:gravity="center">
+            </item>
+        </layer-list>
+    </item>
+
+    <item>
+        <shape android:shape="oval">
+            <stroke android:width="2dp" android:color="#9333EA"/>
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+</selector>

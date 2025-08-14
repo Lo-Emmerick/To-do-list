@@ -5,26 +5,25 @@ import com.example.myapplication.domain.repository.HomeRepository
 
 class HomeRepositoryImpl : HomeRepository {
 
+    var taskList = listOf<Task>()
+
     override suspend fun searchTask(): List<Task> {
-        return listOf(
-            Task(id = 1, isChecked = true, text = "limpar a casa"),
-            Task(id = 2, isChecked = false, text = "lavar roupa")
-        )
+        return taskList
     }
 
-    override suspend fun deleteTask(id: Int): Task {
-        return Task(
-            id = id,
-            isChecked = false,
-            text = "limpar a casa"
-        )
+    override suspend fun deleteTask(information: Task): List<Task> {
+        taskList = taskList.filter{ it.text != information.text }
+        return taskList
     }
 
-    override suspend fun addTask(text: String): Task {
-        return Task(
-            id = 2,
-            isChecked = true,
-            text = text
-        )
+    override suspend fun addTask(text: String): List<Task> {
+        taskList+= listOf(Task(id = taskList.size, false, text))
+        return taskList
+    }
+
+    override suspend fun editCheck(information: Task): List<Task> {
+        taskList = taskList.filter { it.text != information.text }
+        taskList+= listOf(information.copy(isChecked = !information.isChecked))
+        return taskList
     }
 }
