@@ -24,7 +24,7 @@ class HomeViewModel(
         viewModelScope.launch {
             try {
                 val response = searchTaskUseCase()
-                if (response != null) {
+                if (response == null || response.tasks.isEmpty()) {
                     _state.value = HomeState.Empty
                 } else {
                     _state.value = HomeState.Success(response)
@@ -40,7 +40,7 @@ class HomeViewModel(
         viewModelScope.launch {
             try {
                 val response = deleteTaskUseCase(item)
-                if (response == null ) {
+                if (response == null || response.tasks.isEmpty()) {
                     _state.value = HomeState.Empty
                 } else {
                     _state.value = HomeState.Success(response)

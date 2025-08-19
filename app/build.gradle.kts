@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.mockk)
+    implementation(libs.coroutines)
+    implementation(libs.coretesting)
     implementation(libs.koin)
     implementation(libs.koincompat)
     implementation(libs.koinworkmanager)
@@ -49,6 +52,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
+    androidTestImplementation(libs.mockk.android)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -11,6 +11,9 @@ activity = "1.10.1"
 constraintlayout = "2.2.1"
 lifecycleviewmodel = "2.6.1"
 koin = "3.2.0"
+coretesting = "2.2.0"
+coroutines = "1.7.3"
+mockk = "1.13.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -26,6 +29,10 @@ koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koincompat = { group = "io.insert-koin", name = "koin-android-compat", version.ref = "koin" }
 koinworkmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin" }
 koinnavigation = { group = "io.insert-koin", name = "koin-androidx-navigation", version.ref = "koin" }
+coretesting = { group = "androidx.arch.core", name = "core-testing", version.ref = "coretesting" }
+coroutines = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines"}
+mockk = {group = "io.mockk", name = "mockk", version.ref = "mockk"}
+mockk-android = {group = "io.mockk", name = "mockk-android", version.ref = "mockk"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
