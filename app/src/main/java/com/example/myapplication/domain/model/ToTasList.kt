@@ -5,7 +5,7 @@ import com.example.myapplication.data.model.Task
 fun List<Task>.toTaskList(): TaskList {
     return TaskList(
         tasks = this,
-        createdTask = this.count(),
+        createdTask = this.count {!it.isChecked},
         checkedTask = this.count {it.isChecked}
     )
 }
