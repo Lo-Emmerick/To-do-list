@@ -1,6 +1,6 @@
 package com.example.myapplication.domain.repository
 
-import com.example.myapplication.data.Task
+import com.example.myapplication.data.model.Task
 
 interface HomeRepository {
     suspend fun searchTask() : List<Task>

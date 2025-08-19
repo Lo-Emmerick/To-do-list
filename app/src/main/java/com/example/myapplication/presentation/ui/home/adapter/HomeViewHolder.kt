@@ -2,7 +2,7 @@ package com.example.myapplication.presentation.ui.home.adapter
 
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.data.Task
+import com.example.myapplication.data.model.Task
 import com.example.myapplication.databinding.ItemActivityBinding
 
 class HomeViewHolder(

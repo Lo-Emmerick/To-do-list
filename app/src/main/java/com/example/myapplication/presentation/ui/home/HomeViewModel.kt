@@ -2,7 +2,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.Task
+import com.example.myapplication.data.model.Task
 import com.example.myapplication.domain.usecase.AddTaskUseCase
 import com.example.myapplication.domain.usecase.DeleteTaskUseCase
 import com.example.myapplication.domain.usecase.EditCheckUseCase
@@ -24,7 +24,7 @@ class HomeViewModel(
         viewModelScope.launch {
             try {
                 val response = searchTaskUseCase()
-                if (response.isNullOrEmpty()) {
+                if (response != null) {
                     _state.value = HomeState.Empty
                 } else {
                     _state.value = HomeState.Success(response)
@@ -40,7 +40,7 @@ class HomeViewModel(
         viewModelScope.launch {
             try {
                 val response = deleteTaskUseCase(item)
-                if (response.isNullOrEmpty()) {
+                if (response == null ) {
                     _state.value = HomeState.Empty
                 } else {
                     _state.value = HomeState.Success(response)

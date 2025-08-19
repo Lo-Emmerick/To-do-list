@@ -1,10 +1,13 @@
 package com.example.myapplication.domain.usecase
 
-import com.example.myapplication.data.Task
+import com.example.myapplication.data.model.Task
+import com.example.myapplication.domain.model.TaskList
+import com.example.myapplication.domain.model.toTaskList
 import com.example.myapplication.domain.repository.HomeRepository
 
 class EditCheckUseCase(private val repository: HomeRepository) {
-    suspend operator fun invoke(information: Task): List<Task> {
-        return repository.editCheck(information)
+    suspend operator fun invoke(information: Task): TaskList {
+        val updatedTasks = repository.editCheck(information)
+        return updatedTasks.toTaskList()
     }
 }

@@ -2,14 +2,14 @@ package com.example.myapplication.presentation.ui.home
 
 import HomeViewModel
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import com.example.moviedb.ui.home.adapter.HomeAdapter
-import com.example.myapplication.data.Task
+import com.example.myapplication.data.model.Task
 import com.example.myapplication.databinding.ActivityHomeBinding
+import com.example.myapplication.domain.model.TaskList
 import com.example.myapplication.presentation.ui.home.adapter.HomeListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -61,9 +61,11 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         binding.stateError.root.isVisible = true
     }
 
-    private fun showSuccessScreen(taskList: List<Task>) {
+    private fun showSuccessScreen(taskList: TaskList) {
+        binding.tvCreatedCount.text = taskList.createdTask.toString()
+        binding.tvDoneCount.text = taskList.checkedTask.toString()
         binding.recyclerTasks.isVisible = true
-        binding.recyclerTasks.adapter = HomeAdapter(taskList, this)
+        binding.recyclerTasks.adapter = HomeAdapter(taskList.tasks, this)
     }
 
     private fun showLoadingScreen() {

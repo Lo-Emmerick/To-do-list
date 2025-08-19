@@ -3,7 +3,7 @@ package com.example.moviedb.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.myapplication.data.Task
+import com.example.myapplication.data.model.Task
 import com.example.myapplication.databinding.ItemActivityBinding
 import com.example.myapplication.presentation.ui.home.adapter.HomeListener
 import com.example.myapplication.presentation.ui.home.adapter.HomeViewHolder
