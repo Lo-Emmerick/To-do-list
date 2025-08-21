@@ -9,13 +9,11 @@ class HomeRepositoryImpl(
     private val dao: TaskDao
 ) : HomeRepository {
 
-    var taskList = listOf<Task>()
-
     override suspend fun searchTask(): List<Task> = dao.getAllTasks()
 
-    override suspend fun deleteTask(information: Task): List<Task> {
-        taskList = taskList.filter{ it.text != information.text }
-        return taskList
+    override suspend fun deleteTask(id: Int): List<Task> {
+        dao.deleteTaskById(id)
+        return searchTask()
     }
 
     override suspend fun addTask(task: TaskEntity): List<Task> {
@@ -23,9 +21,8 @@ class HomeRepositoryImpl(
         return searchTask()
     }
 
-    override suspend fun editCheck(information: Task): List<Task> {
-        taskList = taskList.filter { it.text != information.text }
-        taskList+= listOf(information.copy(isChecked = !information.isChecked))
-        return taskList
+    override suspend fun editCheck(id: Int): List<Task> {
+        dao.toggleTaskChecked(id)
+        return searchTask()
     }
 }

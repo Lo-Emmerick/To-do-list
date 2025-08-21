@@ -7,7 +7,7 @@ import com.example.myapplication.domain.repository.HomeRepository
 
 class DeleteTaskUseCase(private val repository: HomeRepository) {
     suspend operator fun invoke(item: Task): TaskList {
-        val updatedTasks = repository.deleteTask(item)
+        val updatedTasks = repository.deleteTask(item.id)
         return updatedTasks.toTaskList()
     }
 }

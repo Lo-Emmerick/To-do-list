@@ -9,9 +9,15 @@ import com.example.myapplication.data.model.Task
 
 @Dao
 interface TaskDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTask(task: TaskEntity)
 
-    @Query("SELECT * FROM task")
+    @Query("SELECT * FROM task ORDER BY isChecked ASC")
     suspend fun getAllTasks(): List<Task>
+
+    @Query("DELETE FROM task WHERE id = :taskId")
+    suspend fun deleteTaskById(taskId: Int)
+
+    @Query("UPDATE task SET isChecked = NOT isChecked WHERE id = :taskId")
+    suspend fun toggleTaskChecked(taskId: Int)
 }

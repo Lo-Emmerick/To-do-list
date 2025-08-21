@@ -6,8 +6,8 @@ import com.example.myapplication.domain.model.toTaskList
 import com.example.myapplication.domain.repository.HomeRepository
 
 class EditCheckUseCase(private val repository: HomeRepository) {
-    suspend operator fun invoke(information: Task): TaskList {
-        val updatedTasks = repository.editCheck(information)
+    suspend operator fun invoke(item: Task): TaskList {
+        val updatedTasks = repository.editCheck(item.id)
         return updatedTasks.toTaskList()
     }
 }

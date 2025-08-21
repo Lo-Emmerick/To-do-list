@@ -32,7 +32,6 @@ val loadViewModel = module {
     }
 }
 val databaseModule = module {
-
     single {
         Room.databaseBuilder(
             get(),

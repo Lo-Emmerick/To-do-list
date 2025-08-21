@@ -34,6 +34,7 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         binding.btnAddTask.setOnClickListener {
             val inputText = binding.inputTask.text.toString()
             viewModel.addTask(inputText)
+            binding.inputTask.text.clear()
         }
     }
 
