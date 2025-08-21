@@ -38,11 +38,9 @@ class AddTaskUseCaseTest {
     @Test
     fun `invoke deve retornar TaskList atualizado quando addTask for chamado`() = runTest {
 
-        val task = "Teste 1"
+        coEvery { repository.addTask(any()) } returns tasks
 
-        coEvery { repository.addTask(task) } returns tasks
-
-        val result = addTaskUseCase(task)
+        val result = addTaskUseCase("Teste 1")
 
         assertEquals(expectedTaskList, result)
     }

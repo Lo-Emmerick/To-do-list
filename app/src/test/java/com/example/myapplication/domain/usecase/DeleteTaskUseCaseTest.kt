@@ -38,7 +38,7 @@ class DeleteTaskUseCaseTest {
 
     @Test
     fun `invoke deve retornar TaskList atualizado quando deleteTask for chamado`() = runTest {
-        coEvery { repository.deleteTask(taskToDelete) } returns tasksAfterDelete
+        coEvery { repository.deleteTask(taskToDelete.id) } returns tasksAfterDelete
 
         val result = deleteTaskUseCase(taskToDelete)
 

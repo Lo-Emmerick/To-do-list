@@ -44,7 +44,7 @@ class EditCheckUseCaseTest {
     @Test
     fun `invoke deve retornar TaskList atualizado quando editCheck for chamado`() = runTest {
 
-        coEvery { repository.editCheck(taskToEdit) } returns tasksAfterEdit
+        coEvery { repository.editCheck(taskToEdit.id) } returns tasksAfterEdit
 
         val result = editCheckUseCase(taskToEdit)
 
