@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation.ui.home
 
-import HomeViewModel
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity

@@ -1,3 +1,5 @@
+package com.example.myapplication.presentation.ui.home
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +9,6 @@ import com.example.myapplication.domain.usecase.AddTaskUseCase
 import com.example.myapplication.domain.usecase.DeleteTaskUseCase
 import com.example.myapplication.domain.usecase.EditCheckUseCase
 import com.example.myapplication.domain.usecase.SearchTaskUseCase
-import com.example.myapplication.presentation.ui.home.HomeState
 import kotlinx.coroutines.launch
 
 class HomeViewModel(

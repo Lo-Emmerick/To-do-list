@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -8,6 +9,17 @@ android {
     compileSdk = 35
     buildFeatures {
         viewBinding = true
+    }
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+                "META-INF/NOTICE.md",
+                "META-INF/LICENSE.txt",
+                "META-INF/NOTICE.txt"
+            )
+        }
     }
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -38,6 +50,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.room)
+    implementation(libs.roomruntime)
+    ksp(libs.roomcompiler)
     implementation(libs.mockk)
     implementation(libs.coroutines)
     implementation(libs.coretesting)

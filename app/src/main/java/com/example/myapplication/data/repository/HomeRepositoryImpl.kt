@@ -1,24 +1,26 @@
 package com.example.myapplication.data.repository
 
+import com.example.myapplication.data.local.dao.TaskDao
+import com.example.myapplication.data.local.model.TaskEntity
 import com.example.myapplication.data.model.Task
 import com.example.myapplication.domain.repository.HomeRepository
 
-class HomeRepositoryImpl : HomeRepository {
+class HomeRepositoryImpl(
+    private val dao: TaskDao
+) : HomeRepository {
 
     var taskList = listOf<Task>()
 
-    override suspend fun searchTask(): List<Task> {
-        return taskList
-    }
+    override suspend fun searchTask(): List<Task> = dao.getAllTasks()
 
     override suspend fun deleteTask(information: Task): List<Task> {
         taskList = taskList.filter{ it.text != information.text }
         return taskList
     }
 
-    override suspend fun addTask(text: String): List<Task> {
-        taskList+= listOf(Task(id = taskList.size, false, text))
-        return taskList
+    override suspend fun addTask(task: TaskEntity): List<Task> {
+        dao.insertTask(task)
+        return searchTask()
     }
 
     override suspend fun editCheck(information: Task): List<Task> {
