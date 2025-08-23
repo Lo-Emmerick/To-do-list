@@ -7,20 +7,24 @@ plugins {
 android {
     namespace = "com.example.myapplication"
     compileSdk = 35
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
+        }
+    }
+    testOptions {
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+    }
     buildFeatures {
         viewBinding = true
     }
-    packaging {
-        resources {
-            excludes += setOf(
-                "META-INF/LICENSE.md",
-                "META-INF/LICENSE-notice.md",
-                "META-INF/NOTICE.md",
-                "META-INF/LICENSE.txt",
-                "META-INF/NOTICE.txt"
-            )
-        }
-    }
+
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 24
@@ -40,34 +44,53 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
 }
 
 dependencies {
-    implementation(libs.room)
-    implementation(libs.roomruntime)
-    ksp(libs.roomcompiler)
-    implementation(libs.mockk)
-    implementation(libs.coroutines)
-    implementation(libs.coretesting)
-    implementation(libs.koin)
-    implementation(libs.koincompat)
-    implementation(libs.koinworkmanager)
-    implementation(libs.koinnavigation)
-    implementation(libs.lifecycleviewmodel)
+    // AndroidX e Material
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.lifecycleviewmodel)
+
+    // Koin
+    implementation(libs.koin)
+    implementation(libs.koincompat)
+    implementation(libs.koinworkmanager)
+    implementation(libs.koinnavigation)
+
+    // Coroutines e testes
+    implementation(libs.coroutines)
+    implementation(libs.coretesting)
+    implementation(libs.mockk)
+
+    // Room
+    implementation(libs.room)
+    implementation(libs.roomruntime)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.androidx.test.ext.junit)
+    ksp(libs.roomcompiler)
+
+    // Testes unitários
     testImplementation(libs.junit)
-    androidTestImplementation(libs.mockk.android)
-    androidTestImplementation(libs.androidx.junit)
+
+    // Testes instrumentados
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.testrules)
+    androidTestImplementation(libs.mockkandroid)
 }
