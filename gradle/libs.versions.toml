@@ -19,6 +19,7 @@ ksp = "2.0.21-1.0.26"
 testrules = "1.5.0"
 testrunner = "1.5.2"
 testcore = "1.5.0"
+glide = "4.16.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,6 +45,7 @@ roomcompiler = {group = "androidx.room", name = "room-compiler", version.ref = "
 roomruntime = {group = "androidx.room", name = "room-runtime", version.ref = "room"}
 room = {group = "androidx.room", name = "room-ktx", version.ref = "room"}
 testrules = {group = "androidx.test", name = "rules", version.ref = "testrules"}
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

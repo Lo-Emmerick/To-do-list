@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.lifecycleviewmodel)
 
+    // Glide
+    implementation(libs.glide)
+
     // Koin
     implementation(libs.koin)
     implementation(libs.koincompat)
