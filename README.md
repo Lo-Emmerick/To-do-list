@@ -9,7 +9,7 @@ App Android de listas com persistência local via Room e arquitetura MVVM
 ## Tecnologias e Conceitos Utilizados
 - Criação de layouts com XML
 - Gerenciamento de dependências com Gradle
-- Aplicação de princípios de Clean Code
+- Aplicação de Clean Code
 - Uso do Android SDK: Lifecycle, LiveData e ViewModel
 - Injeção de dependências com Koin
 - Padrões de design (Design Patterns)
